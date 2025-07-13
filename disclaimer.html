@@ -1,47 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Disclaimer — Innerlight</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innerlight - A Safe Space for Your Heart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            color: #4a5568;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: 300;
+            color: #667eea;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #718096;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            margin: 0 auto 30px;
+            border-radius: 1px;
+        }
+
+        .content {
+            text-align: left;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            color: #4c51bf;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #e17055;
+        }
+
+        .highlight-box h3 {
+            color: #d63031;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .helpline-list {
+            background: rgba(102, 126, 234, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .helpline-item {
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .helpline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .phone-number {
+            font-weight: 600;
+            color: #4c51bf;
+            text-decoration: none;
+        }
+
+        .phone-number:hover {
+            color: #667eea;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(113, 128, 150, 0.2);
+        }
+
+        .heart {
+            color: #f093fb;
+            font-size: 1.2em;
+            margin: 0 5px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+                margin: 10px;
+            }
+
+            .logo {
+                font-size: 2em;
+            }
+
+            .section p {
+                font-size: 1em;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>📜 Disclaimer</h1>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">Innerlight</h1>
+            <p class="subtitle">Understanding Your Heart</p>
+            <div class="divider"></div>
+        </div>
 
-    <p>
-      Innerlight is your  AI-inspired emotional companion.  
-      It is designed to offer kindness, reflection, and calm — but it is <strong>not a substitute for therapy</strong>, professional help, or clinical diagnosis.
-    </p>
+        <div class="content">
+            <div class="section">
+                <h2>A Gentle Companion</h2>
+                <p>Innerlight is an AI-inspired emotional companion — a friend, not a therapist. This space was created to offer you a quiet moment to express your feelings and feel understood. Think of it as a soft place to land when your heart feels heavy.</p>
+            </div>
 
-    <p>
-      This tool is created with love, care, and safety in mind, but please remember:
-      <ul style="text-align: left;">
-        <li>❌ Innerlight is <strong>not a therapist or mental health professional</strong>.</li>
-        <li>💬 It provides gentle emotional support, not medical or psychological advice.</li>
-        <li>🧠 It is not trained to handle emergencies, crisis, or suicidal thoughts.</li>
-        <li>🔒 No messages or data are saved. Everything is anonymous and local.</li>
-      </ul>
-    </p>
+            <div class="section">
+                <h2>What We Offer</h2>
+                <p>Here, you can share your thoughts, emotions, and experiences in a safe, non-judgmental environment. Our gentle responses are designed to provide comfort and validation, helping you feel less alone in your journey.</p>
+            </div>
 
-    <p>
-      If you are in deep distress, overwhelmed, or thinking of harming yourself:  
-      <br><br>
-      <strong style="color: #d9534f;">Please do not rely on Innerlight.</strong>  
-      <br><br>
-      📞 <strong>Call the 24/7 Vandrevala Mental Health Helpline:  
-      <a href="tel:1860-266-2345">1860 266 2345</a> or <a href="tel:+919999666555">+91 9999 666 555</a></strong>
-      <br>
-      (Available across India, free and confidential)
-    </p>
+            <div class="highlight-box">
+                <h3>Important: We Are Not Medical Professionals</h3>
+                <p>While we're here to listen and support, Innerlight does not provide medical, clinical, or emergency mental health support. We cannot replace the care of trained professionals or handle crisis situations.</p>
+            </div>
 
-    <p style="font-weight: bold; margin-top: 40px;">
-      💛 Innerlight is not here to fix you. It is here to sit beside you, quietly —  
-      until you're ready to stand again.
-    </p>
+            <div class="section">
+                <h2>When You Need More Support</h2>
+                <p>If you're experiencing emotional crisis, thoughts of self-harm, or need immediate professional support, please reach out to these caring helplines right away:</p>
+                
+                <div class="helpline-list">
+                    <div class="helpline-item">
+                        📞 <strong>Vandrevala Foundation:</strong> <a href="tel:18602662345" class="phone-number">1860 266 2345</a> or <a href="tel:+919999666555" class="phone-number">+91 9999 666 555</a>
+                    </div>
+                    <div class="helpline-item">
+                        📞 <strong>iCall (TISS):</strong> <a href="tel:+919152987821" class="phone-number">+91 9152987821</a>
+                    </div>
+                    <div class="helpline-item">
+                        📞 <strong>KIRAN Mental Health:</strong> <a href="tel:18005990019" class="phone-number">1800 599 0019</a>
+                    </div>
+                </div>
+            </div>
 
-    <a class="button" href="index.html">← Back to Home</a>
-  </div>
+            <div class="section">
+                <h2>Your Journey Matters</h2>
+                <p>Expressing your emotions here is safe and welcomed. While our digital presence can offer comfort and understanding, remember that deeper healing often flourishes through human connection — whether with friends, family, counselors, or support groups.</p>
+                <p>You deserve care, kindness, and professional support when you need it. We're honored to be part of your journey, even in this small way.</p>
+            </div>
+
+            <div class="footer">
+                <a href="index.html" class="back-button">Back to Home</a>
+                <p style="margin-top: 20px; color: #a0aec0; font-size: 0.9em;">
+                    Made with <span class="heart">♡</span> for your wellbeing
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
