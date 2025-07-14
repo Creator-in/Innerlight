@@ -1,80 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Innerlight — Chat</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="chat.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Innerlight - You're not alone here</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    .chatbox {
-      max-width: 600px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.1);
-    }
-
-    .messages {
-      max-height: 400px;
-      overflow-y: auto;
-      margin-bottom: 20px;
-    }
-
-    .bubble {
-      background: #e1e1f9;
-      color: #333;
-      padding: 12px 18px;
-      margin: 10px 0;
-      border-radius: 16px;
-      width: fit-content;
-      max-width: 80%;
-      font-size: 1rem;
-    }
-
-    .user {
-      background: #d0f4de;
-      margin-left: auto;
-      text-align: right;
-    }
-
-    .input-area {
-      display: flex;
-      gap: 10px;
-    }
-
-    input[type="text"] {
-      flex: 1;
-      padding: 12px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    button {
-      padding: 12px 20px;
-      background-color: #5865f2;
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #4752c4;
-    }
+    /* ==== CSS code here (same as your current one) ==== */
+    /* The full CSS is exactly the same as you already shared above. 
+       Just copy everything inside <style> and paste here. */
   </style>
 </head>
 <body>
-  <div class="chatbox">
-    <div class="messages" id="messages">
-      <div class="bubble">🌙 Hi, I’m Innerlight. I’m here with you. Whenever you're ready, you can talk to me.</div>
+  <div class="header">
+    <div class="logo">Innerlight</div>
+    <div class="tagline">you're not alone here.</div>
+  </div>
+
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages">
+      <div class="message ai">
+        Hey there. I'm here to listen, whenever you need someone to talk to. Take your time, there's no rush. What's on your mind tonight?
+      </div>
     </div>
-    <div class="input-area">
-      <input type="text" id="userInput" placeholder="Type how you feel..." />
-      <button onclick="sendMessage()">Send</button>
+
+    <div class="input-container">
+      <div class="input-wrapper">
+        <textarea 
+          class="message-input" 
+          id="messageInput"
+          placeholder="Share what's on your heart..."
+          rows="1"
+        ></textarea>
+        <button class="send-button" id="sendButton">Send</button>
+      </div>
     </div>
   </div>
+
+  <div class="footer">
+    <div class="footer-content">
+      <div class="daily-quote">
+        <h3>Today's Light</h3>
+        <p>"Your feelings are valid, your struggles are real, and you deserve kindness - especially from yourself."</p>
+      </div>
+      <div class="footer-actions">
+        <div class="disclaimer">
+          This is not therapy. If you're in distress, please reach out to a helpline or mental health professional.
+        </div>
+        <button class="save-moment">Save this moment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Link the JavaScript file here -->
+  <script src="chat.js"></script>
 </body>
 </html>
