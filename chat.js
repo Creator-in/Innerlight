@@ -1,62 +1,138 @@
-const messageInput = document.getElementById('messageInput');
-const sendButton = document.getElementById('sendButton');
-const chatMessages = document.getElementById('chatMessages');
+// Innerlight Chat JavaScript
+// Emotional support chat functionality
 
-const responses = [
-  "I hear you. That sounds really difficult to carry.",
-  "Thank you for sharing that with me. Your feelings make complete sense.",
-  "It takes courage to open up about what you're going through.",
-  "You're being so brave by talking about this. I'm here with you.",
-  "That sounds overwhelming. You don't have to face this alone.",
-  "I can feel how much this means to you. Your emotions are valid.",
-  "Sometimes just having someone listen can help lighten the load a little.",
-  "You're showing such strength by reaching out. That matters.",
-  "I'm holding space for everything you're feeling right now.",
-  "Thank you for trusting me with your thoughts. I'm here to listen."
+// Gentle, supportive AI responses
+const supportiveResponses = [
+    "I hear you, and your feelings are completely valid.",
+    "Thank you for sharing that with me. You're being so brave.",
+    "It's okay to feel this way. You're not alone in this.",
+    "I'm here with you, and I'm listening to every word.",
+    "Your emotions matter, and so do you.",
+    "Take a deep breath. You're doing better than you think.",
+    "It's perfectly normal to feel overwhelmed sometimes.",
+    "You have the strength to get through this, one step at a time.",
+    "I believe in you, even when you might not believe in yourself.",
+    "Your feelings are important, and they deserve to be heard.",
+    "It's okay to take things slowly. There's no rush.",
+    "You're showing such courage by reaching out today.",
+    "Every small step forward is still progress.",
+    "You don't have to carry this burden alone.",
+    "It's okay to not be okay sometimes. That's part of being human.",
+    "You're worthy of love and compassion, especially from yourself.",
+    "Your journey matters, and I'm honored to be part of it.",
+    "Sometimes the bravest thing you can do is ask for help.",
+    "You're doing the best you can with what you have right now.",
+    "It's okay to rest when you need to. Self-care isn't selfish.",
+    "Your voice matters, and your story deserves to be told.",
+    "You're not broken. You're healing, and that takes time.",
+    "I see your strength, even in your vulnerability.",
+    "You're allowed to feel proud of yourself for being here.",
+    "It's okay to have difficult days. Tomorrow is a new beginning."
 ];
 
-function addMessage(text, isUser = false) {
-  const messageDiv = document.createElement('div');
-  messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
-  messageDiv.textContent = text;
-  chatMessages.appendChild(messageDiv);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+// DOM elements
+const messageInput = document.getElementById('messageInput');
+const sendButton = document.getElementById('sendButton');
+const messagesContainer = document.getElementById('messagesContainer');
+
+// Auto-resize textarea function
+function autoResizeTextarea() {
+    messageInput.style.height = 'auto';
+    const scrollHeight = messageInput.scrollHeight;
+    const maxHeight = 120;
+    
+    if (scrollHeight > maxHeight) {
+        messageInput.style.height = maxHeight + 'px';
+        messageInput.style.overflowY = 'auto';
+    } else {
+        messageInput.style.height = scrollHeight + 'px';
+        messageInput.style.overflowY = 'hidden';
+    }
 }
 
-function sendMessage() {
-  const message = messageInput.value.trim();
-  if (message) {
-    addMessage(message, true);
-    messageInput.value = '';
-
+// Create and add message to chat
+function addMessage(content, type) {
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${type}`;
+    messageElement.textContent = content;
+    
+    // Add fade-in animation
+    messageElement.style.opacity = '0';
+    messageElement.style.transform = 'translateY(10px)';
+    
+    messagesContainer.appendChild(messageElement);
+    
+    // Trigger animation
     setTimeout(() => {
-      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-      addMessage(randomResponse);
-    }, 1000 + Math.random() * 1000);
-  }
+        messageElement.style.opacity = '1';
+        messageElement.style.transform = 'translateY(0)';
+    }, 50);
+    
+    // Auto-scroll to bottom
+    scrollToBottom();
 }
 
+// Scroll chat to bottom
+function scrollToBottom() {
+    setTimeout(() => {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }, 100);
+}
+
+// Get random supportive response
+function getRandomResponse() {
+    return supportiveResponses[Math.floor(Math.random() * supportiveResponses.length)];
+}
+
+// Send message function
+function sendMessage() {
+    const message = messageInput.value.trim();
+    
+    if (message === '') return;
+    
+    // Add user message
+    addMessage(message, 'user');
+    
+    // Clear input and reset height
+    messageInput.value = '';
+    messageInput.style.height = 'auto';
+    
+    // Disable send button temporarily
+    sendButton.disabled = true;
+    sendButton.textContent = 'Sending...';
+    
+    // Add AI response after 1 second delay
+    setTimeout(() => {
+        const aiResponse = getRandomResponse();
+        addMessage(aiResponse, 'ai');
+        
+        // Re-enable send button
+        sendButton.disabled = false;
+        sendButton.textContent = 'Send';
+        
+        // Focus back on input
+        messageInput.focus();
+    }, 1000);
+}
+
+// Event listeners
 sendButton.addEventListener('click', sendMessage);
 
-messageInput.addEventListener('keypress', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault();
-    sendMessage();
-  }
+messageInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
 });
 
-// Auto-resize textarea
-messageInput.addEventListener('input', function () {
-  this.style.height = 'auto';
-  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
-});
+messageInput.addEventListener('input', autoResizeTextarea);
 
-// Save moment functionality
-document.querySelector('.save-moment').addEventListener('click', function () {
-  this.textContent = 'Moment saved ✨';
-  this.style.background = 'rgba(106, 90, 205, 0.3)';
-  setTimeout(() => {
-    this.textContent = 'Save this moment';
-    this.style.background = 'rgba(255, 255, 255, 0.08)';
-  }, 2000);
+// Initialize
+messageInput.focus();
+
+// Welcome message on page load
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        addMessage("Hello there. I'm here to listen and support you. Feel free to share whatever is on your mind today.", 'ai');
+    }, 500);
 });
