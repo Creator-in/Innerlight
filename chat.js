@@ -1,52 +1,62 @@
+const messageInput = document.getElementById('messageInput');
+const sendButton = document.getElementById('sendButton');
+const chatMessages = document.getElementById('chatMessages');
+
+const responses = [
+  "I hear you. That sounds really difficult to carry.",
+  "Thank you for sharing that with me. Your feelings make complete sense.",
+  "It takes courage to open up about what you're going through.",
+  "You're being so brave by talking about this. I'm here with you.",
+  "That sounds overwhelming. You don't have to face this alone.",
+  "I can feel how much this means to you. Your emotions are valid.",
+  "Sometimes just having someone listen can help lighten the load a little.",
+  "You're showing such strength by reaching out. That matters.",
+  "I'm holding space for everything you're feeling right now.",
+  "Thank you for trusting me with your thoughts. I'm here to listen."
+];
+
+function addMessage(text, isUser = false) {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
+  messageDiv.textContent = text;
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
 function sendMessage() {
-  const input = document.getElementById("userInput");
-  const text = input.value.trim();
-  if (!text) return;
+  const message = messageInput.value.trim();
+  if (message) {
+    addMessage(message, true);
+    messageInput.value = '';
 
-  addMessage(text, "user");
-  input.value = "";
-  
-  setTimeout(() => {
-    const reply = getBotReply(text.toLowerCase());
-    addMessage(reply, "bot");
-  }, 400);
-}
-
-function addMessage(text, sender) {
-  const msgBox = document.getElementById("messages");
-  const div = document.createElement("div");
-  div.className = "bubble";
-  if (sender === "user") div.classList.add("user");
-  div.innerText = text;
-  msgBox.appendChild(div);
-  msgBox.scrollTop = msgBox.scrollHeight;
-}
-
-function getBotReply(message) {
-  const feelings = [
-    { keywords: ["sad", "depressed", "unhappy", "hurt"], reply: "I’m really sorry you're feeling that way. You don’t need to hide your sadness here. I'm with you." },
-    { keywords: ["anxious", "panic", "nervous", "afraid"], reply: "It’s okay to feel overwhelmed sometimes. Breathe with me for a moment... in... out... you're doing great." },
-    { keywords: ["alone", "lonely", "nobody"], reply: "You’re not alone right now. I’m here, quietly listening, whenever you need to talk." },
-    { keywords: ["angry", "frustrated", "rage"], reply: "That sounds really hard. I respect you for expressing it. You’re allowed to feel this way." },
-    { keywords: ["tired", "exhausted", "drained"], reply: "Rest is not weakness. Maybe for now... just sit here with me. No pressure, just presence." },
-    { keywords: ["help", "suicide", "end", "die"], reply: "I'm really concerned about you. Please call someone you trust or reach out to a helpline. You are deeply important. 📞 1860 266 2345" },
-    { keywords: ["okay", "better", "fine"], reply: "Even small okay moments matter. I’m happy you're feeling that. Keep going at your pace." },
-    { keywords: ["love", "heartbroken", "relationship"], reply: "Matters of the heart are heavy. But you are still whole — even when you feel broken." },
-  ];
-
-  for (let group of feelings) {
-    if (group.keywords.some(kw => message.includes(kw))) {
-      return group.reply;
-    }
+    setTimeout(() => {
+      const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+      addMessage(randomResponse);
+    }, 1000 + Math.random() * 1000);
   }
-
-  const generalReplies = [
-    "I'm listening. Tell me more, if you’d like to.",
-    "You don’t have to carry everything alone.",
-    "It’s okay not to be okay. I’m here beside you.",
-    "Let’s sit here for a bit, no need to rush.",
-    "I hear you. Your feelings are valid."
-  ];
-
-  return generalReplies[Math.floor(Math.random() * generalReplies.length)];
 }
+
+sendButton.addEventListener('click', sendMessage);
+
+messageInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+});
+
+// Auto-resize textarea
+messageInput.addEventListener('input', function () {
+  this.style.height = 'auto';
+  this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+});
+
+// Save moment functionality
+document.querySelector('.save-moment').addEventListener('click', function () {
+  this.textContent = 'Moment saved ✨';
+  this.style.background = 'rgba(106, 90, 205, 0.3)';
+  setTimeout(() => {
+    this.textContent = 'Save this moment';
+    this.style.background = 'rgba(255, 255, 255, 0.08)';
+  }, 2000);
+});
